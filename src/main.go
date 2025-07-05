@@ -160,8 +160,7 @@ func saveBlogHandler(w http.ResponseWriter, r *http.Request) {
 
 	// 验证必要字段
 	if blog.Title == "" {
-		sendResponse(w, false, "", nil, "Title is required", http.StatusBadRequest)
-		return
+		blog.Title = "Untitled"
 	}
 
 	if blog.Content == "" {
