@@ -144,11 +144,6 @@ func getBlogHandler(w http.ResponseWriter, r *http.Request) {
 
 // 创建/更新博客处理器
 func saveBlogHandler(w http.ResponseWriter, r *http.Request) {
-	if r.Method != http.MethodPost && r.Method != http.MethodPut {
-		sendResponse(w, false, "", nil, "Method not allowed", http.StatusMethodNotAllowed)
-		return
-	}
-
 	// 读取请求体
 	body, err := io.ReadAll(r.Body)
 	if err != nil {
