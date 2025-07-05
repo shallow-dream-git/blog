@@ -165,8 +165,7 @@ func saveBlogHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if blog.Content == "" {
-		sendResponse(w, false, "", nil, "Content is required", http.StatusBadRequest)
-		return
+		blog.Content = "No content provided"
 	}
 
 	// 对于PUT请求，检查ID是否匹配URL
