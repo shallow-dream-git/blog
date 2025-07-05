@@ -44,7 +44,7 @@ func init() {
 	}
 }
 
-// 保存博客到文件
+// Save 保存博客到文件
 func (b *Blog) Save() error {
 	// 设置时间戳
 	if b.CreatedTime.IsZero() {
@@ -121,11 +121,6 @@ func getBlogID(r *http.Request) (int, error) {
 
 // 获取博客处理器
 func getBlogHandler(w http.ResponseWriter, r *http.Request) {
-	if r.Method != http.MethodGet {
-		sendResponse(w, false, "", nil, "Method not allowed", http.StatusMethodNotAllowed)
-		return
-	}
-
 	id, err := getBlogID(r)
 	if err != nil {
 		sendResponse(w, false, "", nil, err.Error(), http.StatusBadRequest)
