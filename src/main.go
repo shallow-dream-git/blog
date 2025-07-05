@@ -160,13 +160,11 @@ func saveBlogHandler(w http.ResponseWriter, r *http.Request) {
 
 	// 验证必要字段
 	if blog.Title == "" {
-		sendResponse(w, false, "", nil, "Title is required", http.StatusBadRequest)
-		return
+		blog.Title = "Untitled"
 	}
 
 	if blog.Content == "" {
-		sendResponse(w, false, "", nil, "Content is required", http.StatusBadRequest)
-		return
+		blog.Content = "No content"
 	}
 
 	// 对于PUT请求，检查ID是否匹配URL
